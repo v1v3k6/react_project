@@ -1,16 +1,17 @@
 import React from 'react'
 import RenderTopOptionSet from 'src/Components/TopOptions'
+import { IoIosBasket as Logo } from 'react-icons/io';
 import './index.scss'
 
 class Header extends React.Component{
     renderPageLogo = () => {
-        return <>This is where the logo goes!</>
+        return <Logo size={40} />
     }
     generateHeaderRibbon = () => {
         return (
-            <div className="header-parent d-flex">
-                <div>{this.renderPageLogo()}</div>
-                <div><RenderTopOptionSet /></div>
+            <div className="header-parent d-flex justify-content-between row align-items-center w-100 mx-auto">
+                <div className="ml-4 d-flex justify-content-center">{this.renderPageLogo()}</div>
+                <div className="d-flex justify-content-between mr-4"><RenderTopOptionSet /></div>
             </div>
         )
     }
@@ -22,4 +23,4 @@ class Header extends React.Component{
 }
 
 export default Header
-export { H
+export { Header }
