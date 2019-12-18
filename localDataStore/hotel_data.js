@@ -3,83 +3,46 @@ const dataObject = {
         {
             "name": "",
             "type": "",
-            "cost": "",
             "dishes": [
                 {
                     "name": "",
                     "price": 0,
-                    "image": ""
+                    "image": "",
+                    "description": "",
+                    "type": ""
                 },
                 {
                     "name": "",
                     "price": 0,
-                    "image": ""
+                    "image": "",
+                    "description": "",
+                    "type": ""
                 },
                 {
                     "name": "",
                     "price": 0,
-                    "image": ""
+                    "image": "",
+                    "description": "",
+                    "type": ""
                 },
                 {
                     "name": "",
                     "price": 0,
-                    "image": ""
+                    "image": "",
+                    "description": "",
+                    "type": ""
                 }
             ]
-        },
+        }
+    ]
+}
+
+const checkout = {
+    "items": [
         {
-            "name": "",
-            "type": "",
-            "cost": "",
-            "dishes": [
-                {
-                    "name": "",
-                    "price": 0,
-                    "image": ""
-                },
-                {
-                    "name": "",
-                    "price": 0,
-                    "image": ""
-                },
-                {
-                    "name": "",
-                    "price": 0,
-                    "image": ""
-                },
-                {
-                    "name": "",
-                    "price": 0,
-                    "image": ""
-                }
-            ]
-        },
-        {
-            "name": "",
-            "type": "",
-            "cost": "",
-            "dishes": [
-                {
-                    "name": "",
-                    "price": 0,
-                    "image": ""
-                },
-                {
-                    "name": "",
-                    "price": 0,
-                    "image": ""
-                },
-                {
-                    "name": "",
-                    "price": 0,
-                    "image": ""
-                },
-                {
-                    "name": "",
-                    "price": 0,
-                    "image": ""
-                }
-            ]
+            "itemName": "Biriyani",
+            "itemPrice": 200,
+            "itemQty": 1
         }
     ]
 }
