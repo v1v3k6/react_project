@@ -14,3 +14,6 @@ const RouteCreator = () => {
         return <Route exact path={data.linkDir} key={`${data.linkDir}_${index}`} render={<ComponentLoader pathName={data.pathName} />} />
     })
 }
+
+export default RouteCreator
+export { RouteCreator }
