@@ -1,28 +1,30 @@
-import React from "react"
-import { Formik } from "formik"
-import * as yup from "yup"
+import React from "react";
+import { Formik } from "formik";
+import SchemaGenerator from "src/dependencies/schemas";
+import ControlList from "./ControlList.jsx";
+import { observer } from "mobx-react";
+import { observable } from "mobx";
 
-const loginSchema = yup.object().shape({
-  emailid: yup
-    .string()
-    .min(5, "Too Short!")
-    .max(32, "Too Long!")
-    .required("Required")
-})
-
+@observer
 class Signin extends React.Component {
+  @observable username = "";
+  generateInitialValues() {
+    return ControlList.map(data => {
+      console.log(data);
+    });
+  }
   render() {
     return (
       <Formik
-        initialValues={}
+        initialValues={this.generateInitialValues()}
         onSubmit={values => {
-          console.log(values)
+          console.log(values);
         }}
-        validationSchema={loginSchema}
+        validationSchema={SchemaGenerator}
       ></Formik>
-    )
+    );
   }
 }
 
-export default Signin
-export { Signin }
+export default Signin;
+export { Signin };

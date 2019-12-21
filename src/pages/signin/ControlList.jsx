@@ -4,14 +4,16 @@ const ControlList = [
     type: "email",
     label: "Email ID",
     placeholder: "example@example.com",
-    disabled: false
+    disabled: false,
+    value: ""
   },
   {
     name: "password",
     type: "password",
     label: "Password",
     placeholder: "",
-    disabled: false
+    disabled: false,
+    value: ""
   }
 ];
 
