@@ -1,3 +1,3 @@
-import Signin from 'src/pages/Signin/Signin.jsx'
+import Signin from './Signin.jsx'
 export default Signin
 export {Signin}

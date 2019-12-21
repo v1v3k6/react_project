@@ -1,3 +1,3 @@
-import Signup from 'src/pages/Signup/Signup.jsx'
+import Signup from './Signup.jsx'
 export default Signup
 export {Signup}

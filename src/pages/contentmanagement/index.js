@@ -1,3 +1,3 @@
-import ContentManagement from 'src/pages/contentmanagement/ContentManagement.jsx'
+import ContentManagement from './ContentManagement.jsx'
 export default ContentManagement
 export {ContentManagement}
