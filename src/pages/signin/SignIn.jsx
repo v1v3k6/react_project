@@ -1,27 +1,47 @@
 import React from "react";
-import { Formik } from "formik";
-import SchemaGenerator from "src/dependencies/schemas";
-import ControlList from "./ControlList.jsx";
+import { Formik, Form } from "formik";
+import { Button } from "react-bootstrap";
 import { observer } from "mobx-react";
 import { observable } from "mobx";
+import SchemaGenerator from "src/dependencies/schemas";
+import ControlList from "./ControlList.jsx";
+import ControlCreator from "src/components/controlcreator";
+import { Link } from "react-router-dom";
 
 @observer
 class Signin extends React.Component {
-  @observable username = "";
+  @observable dataSet = {};
   generateInitialValues() {
-    return ControlList.map(data => {
-      console.log(data);
+    ControlList.map(data => {
+      this.dataSet[data.name] = data.value;
     });
   }
   render() {
+    this.generateInitialValues();
     return (
       <Formik
-        initialValues={this.generateInitialValues()}
+        initialValues={{ ...this.dataSet }}
         onSubmit={values => {
           console.log(values);
         }}
         validationSchema={SchemaGenerator}
-      ></Formik>
+      >
+        {({ errors, touched, handleChange }) => {
+          return (
+            <Form>
+              <ControlCreator
+                ControlList={ControlList}
+                errors={errors}
+                touched={touched}
+                handleChange={handleChange}
+              />
+              <Button type="submit" className="btn btn-primary form-control">
+                Click Me!
+              </Button>
+            </Form>
+          );
+        }}
+      </Formik>
     );
   }
 }

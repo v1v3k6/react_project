@@ -1,9 +1,9 @@
 const ControlList = [
   {
-    name: "emailid",
+    name: "email",
     type: "email",
     label: "Email ID",
-    placeholder: "example@example.com",
+    placeHolder: "example@example.com",
     disabled: false,
     value: ""
   },
@@ -11,7 +11,7 @@ const ControlList = [
     name: "password",
     type: "password",
     label: "Password",
-    placeholder: "",
+    placeHolder: "",
     disabled: false,
     value: ""
   }
