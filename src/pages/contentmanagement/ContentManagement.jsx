@@ -5,6 +5,9 @@ import topOptions from 'src/dependencies/topoptions'
 import Header from 'src/components/Header'
 import Footer from 'src/components/Footer'
 class ContentManagement extends React.Component{
+    constructor(props){
+        super(props)
+    }
     render(){
         return(
             <>
