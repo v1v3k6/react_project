@@ -5,14 +5,13 @@ class CreateCards extends React.Component {
         super(props)
     }
     render(){
-        const {name='', type='', image='', description, price, id} = this.props
+        const {name='', type='', image='', description, price, id, isFood} = this.props
         return(
             <div key={id}>
-                <div>{image}</div>
-                <div>{name}</div>
-                <div>{type}</div>
-                {price?<div>{price}</div>:null}
-                {description?<div>{description}</div>:null}
+                <img className="p-1 w-100 card-img-top" src={image} alt={name} />
+                <div className="card-title">{name}</div>
+                <div className="card-text">{type}</div>
+                {isFood?<><div className="card-text">{price}</div><div className="card-text">{description}</div></>:''}
             </div>
         )
     }

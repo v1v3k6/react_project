@@ -4,7 +4,7 @@ import './styles.scss'
 class Footer extends React.Component{
     generateFooterRibbon = () => {
         return (
-            <div className="footer-parent d-flex justify-content-between w-100 mx-auto">
+            <div className="footer-parent d-flex justify-content-between w-100 mx-auto mt-1">
                 Footer Content
             </div>
         )
