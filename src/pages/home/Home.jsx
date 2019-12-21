@@ -1,13 +1,23 @@
 import React from 'react'
-class Home extends React.Component{
-    render(){
-        return(
-            <>
-                Home Page!
-            </>
-        )
-    }
-}
+import CreateCard from 'src/components/cards'
+import dataObject from 'lds/hotel_data'
 
-export default Home
-export {Home}
+ class Home extends React.Component{
+     render(){
+         return (
+             <>
+                {dataObject.hotels.map((data,index) => {
+                    console.log("data: ", data)
+                    return (
+                        <div key={index}>
+                            <CreateCard {...{name: data.name, type: data.type, image: data.image, key: data.name+'_'+index}} />
+                        </div>
+                    )
+                })}
+             </>
+         )
+     }
+ }
+
+ export default Home
+ export { Home }
