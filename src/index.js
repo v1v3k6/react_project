@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Template from 'src/Pages'
-const ReactExp = () => {
-    return <><Template /></>
+import Home from 'src/pages/home'
+const Init = () => {
+    return <><Home /></>
 }
 
-ReactDOM.render(<ReactExp />, document.getElementById("root"))
+ReactDOM.render(<Init />, document.getElementById("root"))
