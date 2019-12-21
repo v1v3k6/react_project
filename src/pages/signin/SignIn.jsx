@@ -1,19 +1,28 @@
-import React from "react";
-import { Formik } from "formik";
+import React from "react"
+import { Formik } from "formik"
+import * as yup from "yup"
+
+const loginSchema = yup.object().shape({
+  emailid: yup
+    .string()
+    .min(5, "Too Short!")
+    .max(32, "Too Long!")
+    .required("Required")
+})
 
 class Signin extends React.Component {
   render() {
     return (
       <Formik
-        initialValues={this.state.InitialFormValues}
+        initialValues={}
         onSubmit={values => {
-          console.log(values);
+          console.log(values)
         }}
-        validationSchema={loginValidation}
+        validationSchema={loginSchema}
       ></Formik>
-    );
+    )
   }
 }
 
-export default Signin;
-export { Signin };
+export default Signin
+export { Signin }
