@@ -1,5 +1,6 @@
 import React from "react";
-import { Form, Field } from "formik";
+import { Field } from "formik";
+import { Form } from "react-bootstrap";
 class ControlCreator extends React.Component {
   constructor(props) {
     super(props);
@@ -9,8 +10,8 @@ class ControlCreator extends React.Component {
     return ControlList.map(data => {
       const { name, type, placeHolder, label, disabled, value } = data;
       return (
-        <React.Fragment key={name}>
-          {/* {label && <Form.Label>{label}</Form.Label>} */}
+        <div className="p-2 rounded" key={name}>
+          {label && <Form.Label>{label}</Form.Label>}
           <Field
             onChange={handleChange}
             type={type}
@@ -21,7 +22,7 @@ class ControlCreator extends React.Component {
           {errors[name] && touched[name] ? (
             <div className="alert-danger">{errors[name]}</div>
           ) : null}
-        </React.Fragment>
+        </div>
       );
     });
   };

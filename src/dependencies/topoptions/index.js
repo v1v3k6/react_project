@@ -1,4 +1,3 @@
-const topOptions=["home", "signin", "signup"]
-
-export default topOptions
-export {topOptions}
+import { TopOptionGenerator } from "./TopOptionGenerator.jsx";
+export default TopOptionGenerator;
+export { TopOptionGenerator };
