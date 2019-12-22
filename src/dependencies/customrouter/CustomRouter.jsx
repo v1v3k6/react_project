@@ -18,7 +18,7 @@ const ComponentLoader = loadable(props => {
 
 const CustomRouter = optionSet => {
   return (
-    <>
+    <div className="d-flex mt-1 justify-content-center w-100">
       <Switch>
         {Object.keys(optionSet).map(data => {
           return (
@@ -31,7 +31,7 @@ const CustomRouter = optionSet => {
           );
         })}
       </Switch>
-    </>
+    </div>
   );
 };
 

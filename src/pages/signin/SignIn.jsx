@@ -11,6 +11,7 @@ import {
   isLoggedIn,
   performLogoutAction
 } from "src/dependencies/loginvalidator";
+import "./styles.scss";
 
 @observer
 class Signin extends React.Component {
@@ -23,7 +24,7 @@ class Signin extends React.Component {
   renderFormComponents = localProps => {
     const { errors, touched, handleChange } = localProps;
     return (
-      <Form className="rounded shadow border border-dark p-2 w-50">
+      <Form className="rounded shadow my-2 p-2 w-25 form-container">
         <ControlCreator
           ControlList={ControlList}
           errors={errors}
@@ -39,18 +40,20 @@ class Signin extends React.Component {
   render() {
     this.generateInitialValues();
     return (
-      <Formik
-        initialValues={{ ...this.dataSet }}
-        onSubmit={values => {
-          console.log(values);
-        }}
-        validationSchema={SchemaGenerator}
-        className="d-flex justify-content-center w-100 mx-auto"
-      >
-        {({ errors, touched, handleChange }) => {
-          return this.renderFormComponents({ errors, touched, handleChange });
-        }}
-      </Formik>
+      <div className="form-background w-100 d-flex justify-content-center">
+        <Formik
+          initialValues={{ ...this.dataSet }}
+          onSubmit={values => {
+            console.log(values);
+          }}
+          validationSchema={SchemaGenerator}
+          className="d-flex justify-content-center text-white w-100 mx-auto"
+        >
+          {({ errors, touched, handleChange }) => {
+            return this.renderFormComponents({ errors, touched, handleChange });
+          }}
+        </Formik>
+      </div>
     );
   }
 }
