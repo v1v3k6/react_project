@@ -9,13 +9,23 @@ const isLoggedIn = () => {
 };
 
 const performLoginAction = props => {
-  console.log(props);
   const { email = "", password = "" } = props;
   const localLoginData = loginData();
-  if (localLoginData.email === email && localLoginData.password === password)
+  if (
+    localLoginData &&
+    localLoginData.email === email &&
+    localLoginData.password === password
+  )
     localLoginData.hasUserLoggedIn = true;
-  else localLoginData.hasUserLoggedIn = false;
+  else if (
+    localLoginData &&
+    localLoginData.email !== email &&
+    localLoginData.password !== password
+  )
+    localLoginData.hasUserLoggedIn = false;
+  else return localLoginData;
   sessionStorage.setItem("loginData", JSON.stringify(localLoginData));
+  return localLoginData.hasUserLoggedIn;
 };
 
 const performLogoutAction = () => {
@@ -35,5 +45,6 @@ export {
   performLoginAction,
   isLoggedIn,
   performLogoutAction,
-  simulateAccountCreation
+  simulateAccountCreation,
+  loginData
 };

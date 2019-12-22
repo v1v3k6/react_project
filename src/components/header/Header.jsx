@@ -2,6 +2,7 @@ import React from "react";
 import { IoIosBasket as Logo } from "react-icons/io";
 import CustomLinker from "src/dependencies/customlinker";
 import "./styles.scss";
+import { Link } from "react-router-dom";
 
 class Header extends React.Component {
   constructor(props) {
@@ -15,7 +16,9 @@ class Header extends React.Component {
     return (
       <div className="header-parent d-flex justify-content-between row align-items-center w-100 mx-auto">
         <div className="ml-4 d-flex justify-content-center">
-          {this.renderPageLogo()}
+          <Link to="/Home" className="text-white">
+            {this.renderPageLogo()}
+          </Link>
         </div>
         <div className="d-flex justify-content-between mr-4">
           <CustomLinker

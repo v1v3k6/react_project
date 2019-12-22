@@ -6,9 +6,11 @@ import { observable } from "mobx";
 import { SignUpSchemaGenerator } from "src/dependencies/schemas";
 import ControlList from "./ControlList.jsx";
 import ControlCreator from "src/components/controlcreator";
-import { simulateAccountCreation } from "src/dependencies/loginvalidator";
+import {
+  simulateAccountCreation,
+  loginData
+} from "src/dependencies/loginvalidator";
 import "./styles.scss";
-import { Link } from "react-router-dom";
 
 @observer
 class Signup extends React.Component {
@@ -28,31 +30,40 @@ class Signup extends React.Component {
           touched={touched}
           handleChange={handleChange}
         />
-        <Link to="/signup">
-          <Button type="submit" className="btn btn-primary form-control">
-            Sign Up
-          </Button>
-        </Link>
+        <Button type="submit" className="btn btn-primary form-control">
+          Sign Up
+        </Button>
       </Form>
     );
   };
   render() {
     this.generateInitialValues();
     return (
-      <div className="form-background w-100 d-flex justify-content-center">
-        <Formik
-          initialValues={{ ...this.dataSet }}
-          onSubmit={values => {
-            simulateAccountCreation(values);
-          }}
-          validationSchema={SignUpSchemaGenerator}
-          className="d-flex justify-content-center text-white w-100 mx-auto"
-        >
-          {({ errors, touched, handleChange }) => {
-            return this.renderFormComponents({ errors, touched, handleChange });
-          }}
-        </Formik>
-      </div>
+      <>
+        {!loginData() && (
+          <div className="form-background w-100 d-flex justify-content-center">
+            <Formik
+              initialValues={{ ...this.dataSet }}
+              onSubmit={values => {
+                simulateAccountCreation(values);
+              }}
+              validationSchema={SignUpSchemaGenerator}
+              className="d-flex justify-content-center text-white w-100 mx-auto"
+            >
+              {({ errors, touched, handleChange }) => {
+                return this.renderFormComponents({
+                  errors,
+                  touched,
+                  handleChange
+                });
+              }}
+            </Formik>
+          </div>
+        )}
+        {loginData() && (
+          <div className="alert-success">Signed up successfully!</div>
+        )}
+      </>
     );
   }
 }

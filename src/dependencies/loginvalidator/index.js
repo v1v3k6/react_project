@@ -2,12 +2,14 @@ import {
   performLoginAction,
   isLoggedIn,
   performLogoutAction,
-  simulateAccountCreation
+  simulateAccountCreation,
+  loginData
 } from "./LoginValidator.jsx";
 export default isLoggedIn;
 export {
   performLoginAction,
   isLoggedIn,
   performLogoutAction,
-  simulateAccountCreation
+  simulateAccountCreation,
+  loginData
 };

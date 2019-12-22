@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
 import { observer } from "mobx-react";
 import { observable } from "mobx";
 import CustomRouter from "src/dependencies/customrouter";
@@ -24,6 +24,7 @@ class ContentManagement extends React.Component {
             TopOptionGenerator={TopOptionGenerator}
             userHasLoggedIn={this.userHasLoggedIn.bind(this)}
           />
+          <Redirect to="/Home" />
           <CustomRouter
             {...TopOptionGenerator({
               userHasLoggedIn: this.userHasLoggedIn.bind(this)
