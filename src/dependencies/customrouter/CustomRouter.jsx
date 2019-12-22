@@ -17,6 +17,7 @@ const ComponentLoader = loadable(props => {
 });
 
 const CustomRouter = optionSet => {
+  // optionSet.userHasLoggedIn(false);
   return (
     <div className="d-flex mt-1 justify-content-center w-100">
       <Switch>

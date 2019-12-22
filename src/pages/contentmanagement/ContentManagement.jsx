@@ -10,11 +10,15 @@ import Footer from "src/components/Footer";
 @observer
 class ContentManagement extends React.Component {
   @observable hasLoggedIn = false;
+  @observable hasStarted = true;
   constructor(props) {
     super(props);
   }
   userHasLoggedIn(data) {
     this.hasLoggedIn = data;
+  }
+  initialLoaderCheck(hasStarted) {
+    this.hasStarted = hasStarted;
   }
   render() {
     return (
@@ -24,11 +28,12 @@ class ContentManagement extends React.Component {
             TopOptionGenerator={TopOptionGenerator}
             userHasLoggedIn={this.userHasLoggedIn.bind(this)}
           />
-          <Redirect to="/Home" />
+          {this.hasStarted && <Redirect to="/Home" />}
           <CustomRouter
             {...TopOptionGenerator({
               userHasLoggedIn: this.userHasLoggedIn.bind(this)
             })}
+            initialLoaderCheck={this.initialLoaderCheck.bind(this)}
           />
           <Footer />
         </Router>
