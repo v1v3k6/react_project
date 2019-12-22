@@ -10,7 +10,7 @@ class ControlCreator extends React.Component {
     return ControlList.map(data => {
       const { name, type, placeHolder, label, disabled, value } = data;
       return (
-        <div className="p-2 rounded" key={name}>
+        <div className="p-2 rounded" key={label}>
           {label && <Form.Label>{label}</Form.Label>}
           <Field
             onChange={handleChange}

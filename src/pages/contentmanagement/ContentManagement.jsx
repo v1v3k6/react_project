@@ -14,7 +14,6 @@ class ContentManagement extends React.Component {
     super(props);
   }
   userHasLoggedIn(data) {
-    console.log(data);
     this.hasLoggedIn = data;
   }
   render() {

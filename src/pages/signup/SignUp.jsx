@@ -3,15 +3,12 @@ import { Formik, Form } from "formik";
 import { Button } from "react-bootstrap";
 import { observer } from "mobx-react";
 import { observable } from "mobx";
-import SchemaGenerator from "src/dependencies/schemas";
+import { SignUpSchemaGenerator } from "src/dependencies/schemas";
 import ControlList from "./ControlList.jsx";
 import ControlCreator from "src/components/controlcreator";
-import {
-  performLoginAction,
-  isLoggedIn,
-  performLogoutAction
-} from "src/dependencies/loginvalidator";
+import { simulateAccountCreation } from "src/dependencies/loginvalidator";
 import "./styles.scss";
+import { Link } from "react-router-dom";
 
 @observer
 class Signup extends React.Component {
@@ -31,9 +28,11 @@ class Signup extends React.Component {
           touched={touched}
           handleChange={handleChange}
         />
-        <Button type="submit" className="btn btn-primary form-control">
-          Click Me!
-        </Button>
+        <Link to="/signup">
+          <Button type="submit" className="btn btn-primary form-control">
+            Sign Up
+          </Button>
+        </Link>
       </Form>
     );
   };
@@ -44,9 +43,9 @@ class Signup extends React.Component {
         <Formik
           initialValues={{ ...this.dataSet }}
           onSubmit={values => {
-            console.log(values);
+            simulateAccountCreation(values);
           }}
-          validationSchema={SchemaGenerator}
+          validationSchema={SignUpSchemaGenerator}
           className="d-flex justify-content-center text-white w-100 mx-auto"
         >
           {({ errors, touched, handleChange }) => {

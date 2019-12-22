@@ -1,3 +1,6 @@
-import SchemaGenerator from "./SchemaGenerator.jsx";
-export default SchemaGenerator;
-export { SchemaGenerator };
+import {
+  SignInSchemaGenerator,
+  SignUpSchemaGenerator
+} from "./SchemaGenerator.jsx";
+export default SignInSchemaGenerator;
+export { SignInSchemaGenerator, SignUpSchemaGenerator };
