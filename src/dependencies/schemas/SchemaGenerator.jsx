@@ -15,7 +15,14 @@ const SchemaGenerator = Yup.object().shape({
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,32}$/,
       "Your password must be a combination of letters, symbols and numbers!"
+    ),
+  phone: Yup.string()
+    .matches(
+      /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/,
+      "Phone number must be in the following format: +91 (123) 456-7890"
     )
+    .required("Phone number is mandatory!"),
+  address: Yup.string().required("Address cannot be left blank!")
 });
 
 export default SchemaGenerator;
