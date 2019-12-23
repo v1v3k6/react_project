@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Redirect } from "react-router-dom";
 import { observer } from "mobx-react";
 import { observable } from "mobx";
 import CustomRouter from "src/dependencies/customrouter";
-import TopOptionGenerator from "src/dependencies/topoptions";
+import {TopOptionGenerator, ExtraPages} from "src/dependencies/topoptions";
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
 
@@ -30,9 +30,9 @@ class ContentManagement extends React.Component {
           />
           {this.hasStarted && <Redirect to="/Home" />}
           <CustomRouter
-            {...TopOptionGenerator({
+            MenuOptions = {TopOptionGenerator({
               userHasLoggedIn: this.userHasLoggedIn.bind(this)
-            })}
+            })} ExtraPages={ExtraPages()}
             initialLoaderCheck={this.initialLoaderCheck.bind(this)}
           />
           <Footer />

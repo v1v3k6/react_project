@@ -1,36 +1,42 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import loadable from "@loadable/component";
-
-const capitalizeFirstLetter = capitalizedText => {
-  capitalizedText = capitalizedText[0].toUpperCase() + capitalizedText.slice(1);
-  return capitalizedText;
-};
+import capitalizeFirstLetter from 'src/dependencies/capitalizefirstletter'
 
 const ComponentLoader = loadable(props => {
+  console.log(props.pageName)
   return import(
     /*webpackChunkName: "[request]" */
-    `src/pages/${capitalizeFirstLetter(props.pageName)}/${capitalizeFirstLetter(
-      props.pageName
-    )}.jsx`
+    `src/pages/${props.pageName}/${props.pageName}.jsx`
   );
 });
 
 const CustomRouter = optionSet => {
-  // optionSet.userHasLoggedIn(false);
+  optionSet.initialLoaderCheck(false);
+  console.log(optionSet.MenuOptions)
   return (
     <div className="d-flex mt-1 justify-content-center w-100">
       <Switch>
-        {Object.keys(optionSet).map(data => {
+        {optionSet.MenuOptions.map(data => {
           return (
             <Route
               exact
-              path={"/" + optionSet[data]}
+              path={"/" + capitalizeFirstLetter(data)}
               key={`${optionSet[data]}_${data}`}
-              render={() => <ComponentLoader pageName={optionSet[data]} />}
+              render={() => <ComponentLoader pageName={capitalizeFirstLetter(data)} />}
             />
           );
         })}
+        {optionSet.ExtraPages?optionSet.ExtraPages.map((data,index) => {
+          return (
+            <Route
+              exact
+              path={"/" + capitalizeFirstLetter(data)+":id"}
+              key={`${index}_${data}`}
+              render={() => <ComponentLoader pageName={capitalizeFirstLetter(data)} />}
+            />
+          );
+        }):''}
       </Switch>
     </div>
   );

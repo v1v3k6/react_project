@@ -13,5 +13,9 @@ const TopOptionGenerator = props => {
   return topOptions;
 };
 
+const ExtraPages = () => {
+  return ["foodlist"]
+}
+
 export default TopOptionGenerator;
-export { TopOptionGenerator };
+export { TopOptionGenerator, ExtraPages };

@@ -1,3 +1,3 @@
-import { TopOptionGenerator } from "./TopOptionGenerator.jsx";
+import { TopOptionGenerator, ExtraPages } from "./TopOptionGenerator.jsx";
 export default TopOptionGenerator;
-export { TopOptionGenerator };
+export { TopOptionGenerator, ExtraPages };

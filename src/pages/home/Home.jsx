@@ -11,7 +11,7 @@ class Home extends React.Component {
         {dataObject.hotels.map((data, index) => {
           return (
             <Link
-              to=""
+              to={`/Foodlist:${data.name.replace(/ /g,'')}`}
               className="card mt-1 ml-1 card-dark rounded card-parent"
               key={index}
             >
