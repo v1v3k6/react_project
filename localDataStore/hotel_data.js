@@ -3,6 +3,7 @@ const dataObject = {
         {
             "name": "Food Dharbar",
             "type": "North Indian Style",
+            "id": 1,
             "image": "",
             "dishes": [
                 {
@@ -38,6 +39,7 @@ const dataObject = {
 		{
             "name": "Shree vilas",
             "type": "South Indian",
+            "id": 2,
             "image": "",
             "dishes": [
                 {
@@ -73,6 +75,7 @@ const dataObject = {
 		{
             "name": "Peking",
             "type": "Chinese",
+            "id": 3,
             "image": "",
             "dishes": [
                 {
@@ -108,6 +111,7 @@ const dataObject = {
 		{
             "name": "Chit-Chat",
             "type": "Fast Foods",
+            "id": 4,
             "image": "",
             "dishes": [
                 {

@@ -1,3 +1,3 @@
-import FoodList from './Foodlist.jsx'
-export default FoodList
-export {FoodList}
+import Foodlist from './Foodlist.jsx'
+export default Foodlist
+export {Foodlist}

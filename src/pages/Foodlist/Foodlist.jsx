@@ -1,13 +1,17 @@
 import React from  'react'
-class FoodList extends React.Component{
+class Foodlist extends React.Component{
+    constructor(props){
+        super(props)
+        console.log(this.props)
+    }
     render(){
         return (
-            <>
+            <div>
                 Food list
-            </>
+            </div>
         )
     }
 }
 
-export default FoodList
-export {FoodList}
+export default Foodlist
+export {Foodlist}
