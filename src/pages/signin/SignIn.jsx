@@ -12,6 +12,10 @@ import "./styles.scss";
 @observer
 class Signin extends React.Component {
   @observable dataSet = {};
+  constructor(props){
+    super(props)
+    this.props.initialLoaderCheck(true)
+  }
   generateInitialValues() {
     ControlList.map(data => {
       this.dataSet[data.name] = data.value;

@@ -5,6 +5,10 @@ import "./styles.scss";
 import { Link } from "react-router-dom";
 
 class Home extends React.Component {
+  constructor(props){
+    super(props)
+    this.props.initialLoaderCheck(true)
+  }
   render() {
     return (
       <div className="d-flex justify-content-start flex-wrap w-100">

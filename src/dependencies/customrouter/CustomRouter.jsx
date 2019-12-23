@@ -11,23 +11,21 @@ const ComponentLoader = loadable(props => {
   );
 });
 
-const CustomRouter = optionSet => {
-  optionSet.initialLoaderCheck(false);
-  console.log('o',optionSet.MenuOptions, optionSet.ExtraPages)
+const CustomRouter = props => {
   return (
     <div className="d-flex mt-1 justify-content-center w-100">
       <Switch>
-        {optionSet.MenuOptions.map(data => {
+        {props.MenuOptions.map(data => {
           return (
             <Route
               exact
               path={"/" + capitalizeFirstLetter(data)}
-              key={`${optionSet[data]}_${data}`}
-              render={() => <ComponentLoader pageName={capitalizeFirstLetter(data)} />}
+              key={`${props[data]}_${data}`}
+              render={() => <ComponentLoader initialLoaderCheck={props.initialLoaderCheck} pageName={capitalizeFirstLetter(data)} />}
             />
           );
         })}
-        {optionSet.ExtraPages?optionSet.ExtraPages.map((data,index) => {
+        {props.ExtraPages?props.ExtraPages.map((data,index) => {
           const capitalizedData = capitalizeFirstLetter(data)
           console.log('capitalizedData',capitalizedData)
           return (

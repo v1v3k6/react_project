@@ -28,11 +28,11 @@ class ContentManagement extends React.Component {
             TopOptionGenerator={TopOptionGenerator}
             userHasLoggedIn={this.userHasLoggedIn.bind(this)}
           />
-          {/* {this.hasStarted && <Redirect to="/Home" />} */}
+          {this.hasStarted && <Redirect to="/home" />}
           <CustomRouter
-            MenuOptions = {TopOptionGenerator({
-              userHasLoggedIn: this.userHasLoggedIn.bind(this)
-            })} ExtraPages={ExtraPages()}
+            MenuOptions = {TopOptionGenerator()}
+            userHasLoggedIn={this.userHasLoggedIn.bind(this)}
+            ExtraPages={ExtraPages()}
             initialLoaderCheck={this.initialLoaderCheck.bind(this)}
           />
           <Footer />
