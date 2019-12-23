@@ -4,7 +4,7 @@ const dataObject = {
             "name": "Food Dharbar",
             "type": "North Indian Style",
             "image": "https://media-cdn.tripadvisor.com/media/photo-s/11/45/1b/5f/restaurant-seating.jpg",
-			id=1,
+			"id": 1,
             "dishes": [
                 {
                     "name": "Roti",
@@ -40,7 +40,7 @@ const dataObject = {
             "name": "Shree vilas",
             "type": "South Indian",
             "image": "http://aristocratinterior.com/images/project/residential/restaurant4.jpg",
-			 id=2,
+			 "id": 2,
             "dishes": [
                 {
                     "name": "Idly(2-pcs)",
@@ -76,7 +76,7 @@ const dataObject = {
             "name": "Peking",
             "type": "Chinese",
             "image": "https://2.imimg.com/data2/BH/JJ/MY-4222341/restaurant-interior-designers-500x500.jpg",
-			 id=3,
+			 "id": 3,
             "dishes": [
                 {
                     "name": "Whole Roast Duck",
@@ -112,7 +112,7 @@ const dataObject = {
             "name": "Chit-Chat",
             "type": "Fast Foods",
             "image": "https://5.imimg.com/data5/LL/WF/MY-30123327/restaurant-interior-design-decoration-service-500x500.png",
-			id=4,
+			"id": 4,
             "dishes": [
                 {
                     "name": "Bhel Poori",
