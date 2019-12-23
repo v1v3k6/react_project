@@ -17,7 +17,7 @@ class Signup extends React.Component {
   @observable dataSet = {};
   constructor(props){
     super(props)
-    this.props.initialLoaderCheck(true)
+    this.props.initialLoaderCheck(false)
   }
   generateInitialValues() {
     ControlList.map(data => {

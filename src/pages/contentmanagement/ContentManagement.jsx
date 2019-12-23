@@ -6,6 +6,8 @@ import CustomRouter from "src/dependencies/customrouter";
 import {TopOptionGenerator, ExtraPages} from "src/dependencies/topoptions";
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
+import { isLoggedIn } from "src/dependencies/loginvalidator";
+import './styles.scss'
 
 @observer
 class ContentManagement extends React.Component {
@@ -21,16 +23,17 @@ class ContentManagement extends React.Component {
     this.hasStarted = hasStarted;
   }
   render() {
+    console.log("isLoggedIn(): ",isLoggedIn())
     return (
       <>
-        <Router className="d-flex justify-content-start w-100">
+        <Router className="d-flex justify-content-start w-100 parent-container">
           <Header
             TopOptionGenerator={TopOptionGenerator}
-            userHasLoggedIn={this.userHasLoggedIn.bind(this)}
+            isLoggedIn={isLoggedIn()}
           />
-          {this.hasStarted && <Redirect to="/home" />}
+          {/* {this.hasStarted && <Redirect to="/home" />} */}
           <CustomRouter
-            MenuOptions = {TopOptionGenerator()}
+            MenuOptions = {TopOptionGenerator({ userHasLoggedIn: this.hasLoggedIn })}
             userHasLoggedIn={this.userHasLoggedIn.bind(this)}
             ExtraPages={ExtraPages()}
             initialLoaderCheck={this.initialLoaderCheck.bind(this)}

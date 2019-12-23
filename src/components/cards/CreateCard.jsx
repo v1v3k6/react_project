@@ -1,4 +1,5 @@
 import React from 'react'
+import './styles.scss'
 
 class CreateCards extends React.Component {
     constructor(props){
@@ -7,8 +8,8 @@ class CreateCards extends React.Component {
     render(){
         const {name='', type='', image='', description, price, id, isFood} = this.props
         return(
-            <div key={id}>
-                <img className="p-1 w-100 card-img-top" src={image} alt={name} />
+            <div className="card-container w-100" key={id}>
+                <img className="p-1 custom-image-size w-100" src={image} alt={name} />
                 <div className="card-title">{name}</div>
                 <div className="card-text">{type}</div>
                 {isFood?<><div className="card-text">{price}</div><div className="card-text">{description}</div></>:''}

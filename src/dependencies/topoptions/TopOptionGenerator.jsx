@@ -1,11 +1,13 @@
-import isLoggedIn from "src/dependencies/loginvalidator";
-let topOptions = ["home"];
-
 const TopOptionGenerator = props => {
-  if (isLoggedIn() && !topOptions.includes("logout"))
-    topOptions.push("logout");
-  else if (!isLoggedIn() && !topOptions.includes("signin", "signup"))
+  const {userHasLoggedIn} = props
+  console.log("isLoggedIn: ",props.userHasLoggedIn)
+  let topOptions = ["home"];
+  if (!userHasLoggedIn && !topOptions.includes("signin", "signup"))
     topOptions.push("signin", "signup");
+  if(!topOptions.includes("cart"))
+      topOptions.push("cart");
+  if (userHasLoggedIn && !topOptions.includes("logout"))
+    topOptions.push("logout");
   return topOptions;
 };
 

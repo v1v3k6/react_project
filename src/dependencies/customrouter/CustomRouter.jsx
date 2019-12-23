@@ -1,10 +1,11 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import loadable from "@loadable/component";
+import PageNotFound from 'src/pages/PageNotFound'
+import Logout from 'src/pages/Logout'
 import capitalizeFirstLetter from 'src/dependencies/capitalizefirstletter'
 
 const ComponentLoader = loadable(props => {
-  console.log('p',props.pageName)
   return import(
     /*webpackChunkName: "[request]" */
     `src/pages/${props.pageName}/${props.pageName}.jsx`
@@ -21,22 +22,25 @@ const CustomRouter = props => {
               exact
               path={"/" + capitalizeFirstLetter(data)}
               key={`${props[data]}_${data}`}
-              render={() => <ComponentLoader initialLoaderCheck={props.initialLoaderCheck} pageName={capitalizeFirstLetter(data)} />}
+              render={() => <ComponentLoader userHasLoggedIn={props.userHasLoggedIn} initialLoaderCheck={props.initialLoaderCheck}
+              pageName={capitalizeFirstLetter(data)} />}
             />
           );
         })}
-        {props.ExtraPages?props.ExtraPages.map((data,index) => {
+        {props.ExtraPages?props.ExtraPages.map((data) => {
           const capitalizedData = capitalizeFirstLetter(data)
-          console.log('capitalizedData',capitalizedData)
           return (
             <Route
               exact
-              path={`/${capitalizedData}/:id`}
+              path={`/${capitalizedData}`}
               key={`${'index'}_${data}`}
-              render={() => <ComponentLoader pageName={capitalizedData} />}
+              render={() => <ComponentLoader userHasLoggedIn={props.userHasLoggedIn} initialLoaderCheck={props.initialLoaderCheck}
+              pageName={capitalizedData} />}
             />
           );
         }):''}
+        <Route path="/logout" render={()=><Logout />} />
+        <Route component={PageNotFound} />
       </Switch>
     </div>
   );

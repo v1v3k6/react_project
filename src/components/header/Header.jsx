@@ -7,22 +7,23 @@ import { Link } from "react-router-dom";
 class Header extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props)
   }
   renderPageLogo = () => {
     return <Logo size={40} />;
   };
   generateHeaderRibbon = () => {
-    const { TopOptionGenerator, userHasLoggedIn } = this.props;
+    const { TopOptionGenerator, isLoggedIn } = this.props;
     return (
       <div className="header-parent d-flex justify-content-between row align-items-center w-100 mx-auto">
         <div className="ml-4 d-flex justify-content-center">
-          <Link to="/Home" className="text-white">
+          <Link to="/home" className="text-white">
             {this.renderPageLogo()}
           </Link>
         </div>
         <div className="d-flex justify-content-between mr-4">
           <CustomLinker
-            {...TopOptionGenerator({ userHasLoggedIn: userHasLoggedIn })}
+            {...TopOptionGenerator({ userHasLoggedIn: isLoggedIn })}
           />
         </div>
       </div>

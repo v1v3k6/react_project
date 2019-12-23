@@ -14,7 +14,11 @@ class Signin extends React.Component {
   @observable dataSet = {};
   constructor(props){
     super(props)
-    this.props.initialLoaderCheck(true)
+    // this.props.initialLoaderCheck(false)
+  }
+  componentWillUpdate(){
+    const {userHasLoggedIn} = this.props
+    userHasLoggedIn(loginStatus)
   }
   generateInitialValues() {
     ControlList.map(data => {
@@ -37,6 +41,8 @@ class Signin extends React.Component {
       </Form>
     );
   };
+  sendLoginStatus(loginStatus){
+  }
   render() {
     this.generateInitialValues();
     return (
@@ -46,6 +52,7 @@ class Signin extends React.Component {
           onSubmit={values => {
             const loginStatus = performLoginAction(values);
             if (!loginStatus) alert("Invalid username or password!");
+            else this.sendLoginStatus(loginStatus)
           }}
           validationSchema={SignInSchemaGenerator}
           className="d-flex justify-content-center text-white w-100 mx-auto"
