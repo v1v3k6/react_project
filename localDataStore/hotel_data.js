@@ -3,8 +3,8 @@ const dataObject = {
         {
             "name": "Food Dharbar",
             "type": "North Indian Style",
-            "id": 1,
-            "image": "",
+            "image": "https://media-cdn.tripadvisor.com/media/photo-s/11/45/1b/5f/restaurant-seating.jpg",
+			id=1,
             "dishes": [
                 {
                     "name": "Roti",
@@ -39,34 +39,34 @@ const dataObject = {
 		{
             "name": "Shree vilas",
             "type": "South Indian",
-            "id": 2,
-            "image": "",
+            "image": "http://aristocratinterior.com/images/project/residential/restaurant4.jpg",
+			 id=2,
             "dishes": [
                 {
                     "name": "Idly(2-pcs)",
                     "price": 20,
-                    "image": "",
+                    "image": "https://img.manoramaonline.com/content/dam/mm/en/lifestyle/health/images/2018/8/12/idli-chutney-c.jpg",
                     "description": "",
                     "type": "Veg"
                 },
                 {
                     "name": "Dosa",
                     "price": 50,
-                    "image": "",
+                    "image": "https://www.bigbasket.com/media/uploads/recipe/w-l/1778_6_1.jpg",
                     "description": "",
                     "type": "Veg"
                 },
                 {
                     "name": "Pongal",
                     "price": 50,
-                    "image": "",
+                    "image": "https://s3.ap-south-1.amazonaws.com/hsdreams1/pins/2019/01/big/b7a7ba56b09156f2ee8dde683ea22f47.jpeg",
                     "description": "",
                     "type": "Veg"
                 },
                 {
                     "name": "Vada",
                     "price": 25,
-                    "image": "",
+                    "image": "https://im.rediff.com/travel-living/2015/apr/144302c33c547d28928409d18e3cf130093b56e8.jpg",
                     "description": "",
                     "type": "Veg"
                 }
@@ -75,34 +75,34 @@ const dataObject = {
 		{
             "name": "Peking",
             "type": "Chinese",
-            "id": 3,
-            "image": "",
+            "image": "https://2.imimg.com/data2/BH/JJ/MY-4222341/restaurant-interior-designers-500x500.jpg",
+			 id=3,
             "dishes": [
                 {
                     "name": "Whole Roast Duck",
                     "price": 201,
-                    "image": "",
+                    "image": "https://houseofnasheats.com/wp-content/uploads/2018/11/Honey-Roasted-Duck-16.jpg",
                     "description": "",
                     "type": "Non-Veg"
                 },
                 {
-                    "name": "Chicken Dynamite",
+                    "name": "Dragon Chicken",
                     "price": 125,
-                    "image": "",
+                    "image": "https://www.jinooskitchen.com/wp-content/uploads/2018/07/dragon-chicken-final.jpg",
                     "description": "",
                     "type": "Non-Veg"
                 },
                 {
                     "name": "Chicken Haka Noodles",
                     "price": 140,
-                    "image": "",
+                    "image": "https://i.pinimg.com/236x/6f/8c/3b/6f8c3b0797dd94de79cee86f08c969df--indian-vegetarian-recipes-noodles.jpg",
                     "description": "",
                     "type": "Non-Veg"
                 },
                 {
                     "name": "Manchow soup",
                     "price": 70,
-                    "image": "",
+                    "image": "https://www.sanjeevkapoor.com/UploadFiles/RecipeImages/Vegetable-Manchow-Soup---SK-Khazana.jpg",
                     "description": "",
                     "type": "Non-Veg"
                 }
@@ -111,8 +111,8 @@ const dataObject = {
 		{
             "name": "Chit-Chat",
             "type": "Fast Foods",
-            "id": 4,
-            "image": "",
+            "image": "https://5.imimg.com/data5/LL/WF/MY-30123327/restaurant-interior-design-decoration-service-500x500.png",
+			id=4,
             "dishes": [
                 {
                     "name": "Bhel Poori",
@@ -147,7 +147,5 @@ const dataObject = {
 		
     ]
 }
-
-
 export default dataObject
 export {dataObject}
