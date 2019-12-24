@@ -10,7 +10,7 @@ class Home extends React.Component {
   }
   render() {
     return (
-      <div className="d-flex justify-content-start flex-wrap w-100">
+      <div className="d-flex justify-content-start flex-wrap w-75">
         {dataObject.hotels.map((data, index) => {
           return (
             <Link

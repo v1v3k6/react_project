@@ -5,6 +5,7 @@ import PageNotFound from 'src/pages/PageNotFound'
 import Home from 'src/pages/Home'
 import Logout from 'src/pages/Logout'
 import capitalizeFirstLetter from 'src/dependencies/capitalizefirstletter'
+import ContentManagement from "src/pages/ContentManagement/ContentManagement.jsx";
 
 const ComponentLoader = loadable(props => {
   return import(
@@ -43,6 +44,7 @@ const CustomRouter = props => {
         }) : ''}
         <Route exact strict path="/logout" render={(routeProps) => <Logout {...routeProps} />} />
         <Route exact strict path="/" render={(routeProps) => <Home {...routeProps} />} />
+        <Route exact strict path="/cm" render={(routeProps) => <ContentManagement {...routeProps} />} />
         <Route component={PageNotFound} />
       </Switch>
     </div>

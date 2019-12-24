@@ -24,7 +24,7 @@ class ContentManagement extends React.Component {
   }
   render() {
     return (
-      <Router className="d-flex justify-content-start w-100 parent-container">
+      <Router className="d-flex justify-content-center w-100 parent-container">
         <Header
           TopOptionGenerator={TopOptionGenerator}
           isLoggedIn={isLoggedIn()}
