@@ -14,7 +14,9 @@ class CreateCards extends React.Component {
       description,
       price,
       id,
-      isFood
+      isFood,
+      updateCartValue,
+      hotelName="",
     } = this.props;
     return (
       <div className="card-container w-100 p-1 rounded d-flex flex-wrap justify-content-center" key={id}>
@@ -26,8 +28,8 @@ class CreateCards extends React.Component {
             <div className="card-text text-center w-100">Price: INR {price}</div>
             <div className="card-text text-center w-100">{description}</div>
             <div className="card-text w-100 d-flex justify-content-between">
-              <Button>Add to cart</Button>
-              <Button disabled={true} >Remove from cart</Button>
+              <Button onClick={()=>updateCartValue(hotelName,name,1)}>Add to cart</Button>
+              <Button onClick={()=>updateCartValue(hotelName,name,-1)}>Remove from cart</Button>
             </div>
           </>
         ) : (
