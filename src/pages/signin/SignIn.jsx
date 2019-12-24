@@ -44,7 +44,7 @@ class Signin extends React.Component {
         onSubmit={values => {
           const loginStatus = performLoginAction(values);
           if (!loginStatus) alert("Invalid username or password!");
-          else this.props.history.push('/home')
+          else this.props.history.push('/')
         }}
         validationSchema={SignInSchemaGenerator}
         className="d-flex justify-content-center text-white w-100 mx-auto"

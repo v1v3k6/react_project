@@ -7,8 +7,8 @@ const CustomLinker = optionSet => {
       {Object.keys(optionSet).map(data => {
         return (
           <Link
-            to={optionSet[data]}
-            key={`${optionSet[data]}_${data}`}
+            to={'/'+optionSet[data]}
+            key={`index_${optionSet[data]}`}
             className="ml-4 highlighter-link p-2 rounded text-capitalize text-white"
           >
             {optionSet[data]}

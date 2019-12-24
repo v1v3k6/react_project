@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import loadable from "@loadable/component";
 import PageNotFound from 'src/pages/PageNotFound'
+import Home from 'src/pages/Home'
 import Logout from 'src/pages/Logout'
 import capitalizeFirstLetter from 'src/dependencies/capitalizefirstletter'
 
@@ -32,14 +33,16 @@ const CustomRouter = props => {
           return (
             <Route
               exact
-              path={data === "foodlist" ? `/${capitalizedData}/:id` : `/${capitalizedData}`}
+              strict
+              path={data === "foodlist" ? `/${data}/:id` : `/${data}`}
               key={`${'index'}_${data}`}
               render={(routeProps) => <ComponentLoader {...props} {...routeProps}
                 pageName={capitalizedData} />}
             />
           );
         }) : ''}
-        <Route path="/logout" render={(routeProps) => <Logout {...routeProps} />} />
+        <Route exact strict path="/logout" render={(routeProps) => <Logout {...routeProps} />} />
+        <Route exact strict path="/" render={(routeProps) => <Home {...routeProps} />} />
         <Route component={PageNotFound} />
       </Switch>
     </div>
