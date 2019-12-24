@@ -17,19 +17,22 @@ class CreateCards extends React.Component {
       isFood
     } = this.props;
     return (
-      <div className="card-container w-100" key={id}>
+      <div className="card-container w-100 p-1 rounded d-flex flex-wrap justify-content-center" key={id}>
         <img className="p-1 custom-image-size w-100" src={image} alt={name} />
-        <div className="card-title">{name}</div>
-        <div className="card-text">{type}</div>
+        <div className="card-title text-center w-100">{name}</div>
+        <div className="card-text text-center w-100">{type}</div>
         {isFood ? (
           <>
-            <div className="card-text">{price}</div>
-            <div className="card-text">{description}</div>
-            <Button>Add to cart</Button>
+            <div className="card-text text-center w-100">Price: INR {price}</div>
+            <div className="card-text text-center w-100">{description}</div>
+            <div className="card-text w-100 d-flex justify-content-between">
+              <Button>Add to cart</Button>
+              <Button disabled={true} >Remove from cart</Button>
+            </div>
           </>
         ) : (
-          ""
-        )}
+            ""
+          )}
       </div>
     );
   }

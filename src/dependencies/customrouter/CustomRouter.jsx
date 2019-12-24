@@ -22,24 +22,24 @@ const CustomRouter = props => {
               exact
               path={"/" + capitalizeFirstLetter(data)}
               key={`${props[data]}_${data}`}
-              render={() => <ComponentLoader userHasLoggedIn={props.userHasLoggedIn} initialLoaderCheck={props.initialLoaderCheck}
-              pageName={capitalizeFirstLetter(data)} />}
+              render={(routeProps) => <ComponentLoader {...props} {...routeProps}
+                pageName={capitalizeFirstLetter(data)} />}
             />
           );
         })}
-        {props.ExtraPages?props.ExtraPages.map((data) => {
+        {props.ExtraPages ? props.ExtraPages.map((data) => {
           const capitalizedData = capitalizeFirstLetter(data)
           return (
             <Route
               exact
-              path={`/${capitalizedData}`}
+              path={data === "foodlist" ? `/${capitalizedData}/:id` : `/${capitalizedData}`}
               key={`${'index'}_${data}`}
-              render={() => <ComponentLoader userHasLoggedIn={props.userHasLoggedIn} initialLoaderCheck={props.initialLoaderCheck}
-              pageName={capitalizedData} />}
+              render={(routeProps) => <ComponentLoader {...props} {...routeProps}
+                pageName={capitalizedData} />}
             />
           );
-        }):''}
-        <Route path="/logout" render={()=><Logout />} />
+        }) : ''}
+        <Route path="/logout" render={(routeProps) => <Logout {...routeProps} />} />
         <Route component={PageNotFound} />
       </Switch>
     </div>

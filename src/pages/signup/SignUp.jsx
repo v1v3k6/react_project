@@ -15,9 +15,8 @@ import "./styles.scss";
 @observer
 class Signup extends React.Component {
   @observable dataSet = {};
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.props.initialLoaderCheck(false)
   }
   generateInitialValues() {
     ControlList.map(data => {
@@ -50,6 +49,7 @@ class Signup extends React.Component {
               initialValues={{ ...this.dataSet }}
               onSubmit={values => {
                 simulateAccountCreation(values);
+                this.props.history('/home')
               }}
               validationSchema={SignUpSchemaGenerator}
               className="d-flex justify-content-center text-white w-100 mx-auto"

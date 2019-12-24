@@ -1,11 +1,10 @@
 const TopOptionGenerator = props => {
-  const {userHasLoggedIn} = props
-  console.log("isLoggedIn: ",props.userHasLoggedIn)
+  const { userHasLoggedIn } = props
   let topOptions = ["home"];
   if (!userHasLoggedIn && !topOptions.includes("signin", "signup"))
     topOptions.push("signin", "signup");
-  if(!topOptions.includes("cart"))
-      topOptions.push("cart");
+  if (!topOptions.includes("cart"))
+    topOptions.push("cart");
   if (userHasLoggedIn && !topOptions.includes("logout"))
     topOptions.push("logout");
   return topOptions;

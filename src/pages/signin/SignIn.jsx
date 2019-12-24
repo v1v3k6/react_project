@@ -6,18 +6,15 @@ import { observable } from "mobx";
 import { SignInSchemaGenerator } from "src/dependencies/schemas";
 import ControlList from "./ControlList.jsx";
 import ControlCreator from "src/components/controlcreator";
-import { performLoginAction } from "src/dependencies/loginvalidator";
+import { performLoginAction, isLoggedIn } from "src/dependencies/loginvalidator";
 import "./styles.scss";
 
 @observer
 class Signin extends React.Component {
   @observable dataSet = {};
+  @observable renderDataAgain = false
   constructor(props) {
     super(props);
-  }
-  componentWillUpdate() {
-    const { userHasLoggedIn } = this.props;
-    userHasLoggedIn(loginStatus);
   }
   generateInitialValues() {
     ControlList.map(data => {
@@ -40,29 +37,35 @@ class Signin extends React.Component {
       </Form>
     );
   };
-  sendLoginStatus(loginStatus) {}
+  renderFormik() {
+    return (
+      <Formik
+        initialValues={{ ...this.dataSet }}
+        onSubmit={values => {
+          const loginStatus = performLoginAction(values);
+          if (!loginStatus) alert("Invalid username or password!");
+          else this.props.history.push('/home')
+        }}
+        validationSchema={SignInSchemaGenerator}
+        className="d-flex justify-content-center text-white w-100 mx-auto"
+      >
+        {({ errors, touched, handleChange }) => {
+          return this.renderFormComponents({ errors, touched, handleChange });
+        }}
+      </Formik>
+    )
+  }
   render() {
     this.generateInitialValues();
     return (
-      <div className="form-background w-100 d-flex justify-content-center">
-        <Formik
-          initialValues={{ ...this.dataSet }}
-          onSubmit={values => {
-            const loginStatus = performLoginAction(values);
-            if (!loginStatus) alert("Invalid username or password!");
-            else this.sendLoginStatus(loginStatus);
-          }}
-          validationSchema={SignInSchemaGenerator}
-          className="d-flex justify-content-center text-white w-100 mx-auto"
-        >
-          {({ errors, touched, handleChange }) => {
-            return this.renderFormComponents({ errors, touched, handleChange });
-          }}
-        </Formik>
-      </div>
+      <>
+        {!isLoggedIn() && (<div className="form-background w-100 d-flex justify-content-center">
+          {this.renderFormik()}
+        </div>)}
+        {isLoggedIn() && (<div className="alert-danger">Already signed in!</div>)}
+      </>
     );
   }
 }
-
 export default Signin;
 export { Signin };

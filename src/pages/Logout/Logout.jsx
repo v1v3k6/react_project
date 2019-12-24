@@ -1,5 +1,5 @@
 import React from "react";
-import Signin from "src/pages/Signin";
+import Home from "src/pages/Home";
 import {
   performLogoutAction,
   loginData
@@ -17,7 +17,8 @@ class Logout extends React.Component {
   render() {
     if (this.loginStatus) {
       performLogoutAction();
-      return <Signin />;
+      this.props.history.push('/signin')
+      return <>Logged out!</>;
     }
     return null;
   }

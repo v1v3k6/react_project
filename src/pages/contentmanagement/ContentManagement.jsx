@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Redirect } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom"
 import { observer } from "mobx-react";
 import { observable } from "mobx";
 import CustomRouter from "src/dependencies/customrouter";
@@ -12,36 +12,34 @@ import "./styles.scss";
 @observer
 class ContentManagement extends React.Component {
   @observable hasLoggedIn = false;
-  @observable hasStarted = true;
+  @observable hasPageUpdated = false;
   constructor(props) {
     super(props);
   }
   userHasLoggedIn(data) {
     this.hasLoggedIn = data;
   }
-  initialLoaderCheck(hasStarted) {
-    this.hasStarted = hasStarted;
+  checkPageUpdate(hasPageUpdated) {
+    this.hasPageUpdated = hasPageUpdated;
   }
   render() {
     return (
-      <>
-        <Router className="d-flex justify-content-start w-100 parent-container">
-          <Header
-            TopOptionGenerator={TopOptionGenerator}
-            isLoggedIn={isLoggedIn()}
-          />
-          {/* {this.hasStarted && <Redirect to="/home" />} */}
-          <CustomRouter
-            MenuOptions={TopOptionGenerator({
-              userHasLoggedIn: this.hasLoggedIn
-            })}
-            userHasLoggedIn={this.userHasLoggedIn}
-            ExtraPages={ExtraPages()}
-            initialLoaderCheck={this.initialLoaderCheck.bind(this)}
-          />
-          <Footer />
-        </Router>
-      </>
+      <Router className="d-flex justify-content-start w-100 parent-container">
+        <Header
+          TopOptionGenerator={TopOptionGenerator}
+          isLoggedIn={isLoggedIn()}
+        />
+        <div className="d-none">{this.hasPageUpdated}</div>
+        <CustomRouter
+          MenuOptions={TopOptionGenerator({
+            userHasLoggedIn: this.hasLoggedIn
+          })}
+          userHasLoggedIn={this.userHasLoggedIn.bind(this)}
+          ExtraPages={ExtraPages()}
+          checkPageUpdate={this.checkPageUpdate.bind(this)}
+        />
+        <Footer />
+      </Router>
     );
   }
 }

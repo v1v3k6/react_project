@@ -5,9 +5,8 @@ import { Link } from "react-router-dom";
 import "./styles.scss";
 
 class Home extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.props.initialLoaderCheck(true)
   }
   render() {
     return (
@@ -15,7 +14,7 @@ class Home extends React.Component {
         {dataObject.hotels.map((data, index) => {
           return (
             <Link
-              to={`/foodlist/?id=${data.id}`}
+              to={`/foodlist/${data.id}`}
               className="card mt-1 ml-1 card-dark rounded card-parent"
               key={index}
             >
