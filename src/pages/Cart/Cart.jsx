@@ -1,57 +1,56 @@
 import React from 'react'
+import { Button } from 'react-bootstrap'
 import './styles.scss'
 class Cart extends React.Component {
     constructor(props) {
         super(props)
     }
-    renderCartData(cartData) {
-        Object.keys(cartData).map((data, index)=>{
-            console.log(data," : ",index)
+    generateItemList = (cartValue) => {
+        const { updateCartValue } = this.props
+        return Object.keys(cartValue.hotel.items).map((data, index) => {
+            return (
+                <div className="d-flex justify-content-start w-100 shadow mt-2 flex-wrap align-middle" key={`${data}_${index}`}>
+                    <div className="product-data d-flex justify-content-around w-50">
+                        <div key={`${index}_name`} className="item-name w-25 align-middle">{data}</div>
+                        <div key={`${index}_price`} className="item-price w-25">{cartValue.hotel.items[data].price}</div>
+                        <div key={`${index}_quantity`} className="item-quantity-control d-flex w-25 p-2">
+                            <Button onClick={() => { updateCartValue({ name: data, hotelName: cartValue.hotel.name, price: cartValue.hotel.items[data].price }, 1) }}>+</Button>
+                            <div className="item-quantity-text">{cartValue.hotel.items[data].quantity}</div>
+                            <Button onClick={() => { updateCartValue({ name: data, hotelName: cartValue.hotel.name, price: cartValue.hotel.items[data].price }, -1) }}>-</Button>
+                        </div>
+                    </div>
+                    <div className="product-price-final w-50 text-center">
+                        {cartValue.hotel.items[data].price * cartValue.hotel.items[data].quantity}
+                    </div>
+                </div>
+            )
         })
-        return <>
-            <div className="shopping-cart">
-                <div className="title">
-                    Shopping Bag
+    }
+    renderCartData() {
+        const { cartValue } = this.props
+        return (
+            <>
+                <div className="shopping-cart w-100 d-flex justify-content-center flex-wrap">
+                    <div className="title w-100 d-flex justify-content-center">Your Cart</div>
+                    <div className="cart-container-parent w-100 d-flex justify-content-center flex-wrap">
+                        {this.generateItemList(cartValue)}
+                    </div>
+                    <div className="totalValue d-flex justify-content-center flex-wrap w-100 mt-2">
+                        <div className="totalValueText w-50 text-left">Total Value</div>
+                        <div className="totalValuePrice w-50 text-center">{cartValue.hotel.totalPrice}</div>
+                    </div>
+                    <Button onClick={() => {
+                        alert("Hi! This feature is yet to be implemented!!")
+                    }} className="w-100 btn btn-success mt-2">Proceed To Checkout</Button>
                 </div>
-                <div className="item">
-                    <div className="buttons">
-                        <span className="delete-btn"></span>
-                    <span className="like-btn"></span>
-                </div>
- 
-                <div className="image">
-                    <img src={cartData.hotel.image} alt="" />
-                </div>
- 
-                <div className="description">
-                    <span>Common Projects</span>
-                    <span>Bball High</span>
-                    <span>White</span>
-                </div>
- 
-                <div className="quantity">
-                    <button className="plus-btn" type="button" name="button">
-                        <img src="plus.svg" alt="" />
-                    </button>
-                    <input type="text" name="name" value="1" />
-                    <button className="minus-btn" type="button" name="button">
-                        <img src="minus.svg" alt="" />
-                    </button>
-                </div>
- 
-                <div className="total-price">$549</div>
-            </div>
- 
-            <div className="total-price">$349</div>
-        </div>
-    </>
+            </>
+        )
     }
     render() {
         const { cartValue } = this.props
-        console.log("cartValue: ", JSON.parse(JSON.stringify(cartValue)))
         return (
             <>
-                {cartValue.hotel.totalQuantity > 0 ? this.renderCartData(cartValue) : <div>Ooopsss! Your cart is empty!</div>}
+                {cartValue.hotel.totalQuantity > 0 ? this.renderCartData() : <div>Ooopsss! Your cart is empty!</div>}
             </>
         )
     }

@@ -43,7 +43,6 @@ class ContentManagement extends React.Component {
       else
         this.cartValue.hotel.items = addToCart({ name, image, price }, this.cartValue.hotel)
     }
-    console.log("cartData: ", JSON.parse(JSON.stringify(this.cartValue)))
   }
   render() {
     return (
@@ -61,8 +60,8 @@ class ContentManagement extends React.Component {
           userHasLoggedIn={this.userHasLoggedIn.bind(this)}
           ExtraPages={ExtraPages()}
           checkPageUpdate={this.checkPageUpdate.bind(this)}
-          updateCartValue={this.updateCartValue.bind(this)}
           cartValue={this.cartValue}
+          updateCartValue={this.updateCartValue.bind(this)}
         />
         <Footer />
       </Router>

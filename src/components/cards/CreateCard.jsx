@@ -15,8 +15,7 @@ class CreateCards extends React.Component {
       price,
       id,
       isFood,
-      updateCartValue,
-      cartValue,
+      updateCartValue
     } = this.props;
     return (
       <div className="card-container w-100 p-1 rounded d-flex flex-wrap justify-content-center" key={id}>
