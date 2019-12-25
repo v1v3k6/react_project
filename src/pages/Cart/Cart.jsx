@@ -1,8 +1,18 @@
 import React from 'react'
 class Cart extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+    renderCartData(cartData) {
+        return <>Your items!</>
+    }
     render() {
+        const { cartValue } = this.props
+        console.log("cartValue: ", JSON.parse(JSON.stringify(cartValue)))
         return (
-            <div>Will be added soon!</div>
+            <>
+                {cartValue.totalQuantity > 0 ? this.renderCartData(cartData) : <div>Ooopsss! Your cart is empty!</div>}
+            </>
         )
     }
 }

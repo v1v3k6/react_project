@@ -1,22 +1,16 @@
 import React from "react";
-import Home from "src/pages/Home";
 import {
-  performLogoutAction,
-  loginData
+  isLoggedIn,
+  performLogoutAction
 } from "src/dependencies/loginvalidator";
-import { observer } from "mobx-react";
-import { observable } from "mobx";
-
-@observer
 class Logout extends React.Component {
-  @observable loginStatus;
   constructor(props) {
     super(props);
-    this.loginStatus = loginData();
   }
   render() {
-    if (this.loginStatus) {
-      performLogoutAction();
+    const { checkPageUpdate } = this.props
+    if (isLoggedIn()) {
+      performLogoutAction({ checkPageUpdate });
       this.props.history.push('/signin')
       return <>Logged out!</>;
     }

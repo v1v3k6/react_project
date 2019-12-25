@@ -7,13 +7,21 @@ import { TopOptionGenerator, ExtraPages } from "src/dependencies/topoptions";
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
 import { isLoggedIn } from "src/dependencies/loginvalidator";
+import { addToCart, removeFromCart } from 'src/dependencies/addtocart'
 import "./styles.scss";
 
 @observer
 class ContentManagement extends React.Component {
   @observable hasLoggedIn = false;
   @observable hasPageUpdated = false;
-  @observable cartValue={}
+  @observable cartValue = {
+    hotel: {
+      name: "",
+      totalQuantity: 0,
+      totalPrice: 0,
+      items: {}
+    }
+  }
   constructor(props) {
     super(props);
   }
@@ -23,23 +31,21 @@ class ContentManagement extends React.Component {
   checkPageUpdate(hasPageUpdated) {
     this.hasPageUpdated = hasPageUpdated;
   }
-  updateCartValue(hotel,item,value){
-    if(!this.cartValue[hotel])
-      this.cartValue[hotel]={}
-    if(!isNaN(this.cartValue[hotel][item]))
-      this.cartValue[hotel][item]+=value
-    else
-      this.cartValue[hotel][item]=value
+  updateCartValue(itemData, value) {
+    const { name, hotelName, price } = itemData
 
-    if(!isNaN(this.cartValue.total))
-      this.cartValue.total+=value
-    else
-      this.cartValue.total=value
-    if(this.cartValue.total<0 || this.cartValue[hotel][item]<0){
-      this.cartValue.total=0
-      this.cartValue[hotel][item]=0
+    if (!this.cartValue.hotel.name[hotelName] || this.cartValue.hotel.name === "")
+      this.cartValue.hotel.name = hotelName
+
+    if (this.cartValue.hotel.name === hotelName) {
+      if (value == -1)
+        this.cartValue.hotel.items = removeFromCart({ name, price }, this.cartValue.hotel)
+      else
+        this.cartValue.hotel.items = addToCart({ name, price }, this.cartValue.hotel)
     }
-    console.log(JSON.parse(JSON.stringify(this.cartValue)))
+
+    // console.log(id)
+    // console.log(this.cartValue)
   }
   render() {
     return (
@@ -47,7 +53,7 @@ class ContentManagement extends React.Component {
         <Header
           TopOptionGenerator={TopOptionGenerator}
           isLoggedIn={isLoggedIn()}
-          cartValue={this.cartValue.total?this.cartValue.total:0}
+          cartValue={this.cartValue.hotel.totalQuantity}
         />
         <div className="d-none">{this.hasPageUpdated}</div>
         <CustomRouter
@@ -58,7 +64,7 @@ class ContentManagement extends React.Component {
           ExtraPages={ExtraPages()}
           checkPageUpdate={this.checkPageUpdate.bind(this)}
           updateCartValue={this.updateCartValue.bind(this)}
-          cartValue={this.cartValue.total?this.cartValue.total:0}
+          cartValue={this.cartValue}
         />
         <Footer />
       </Router>

@@ -42,9 +42,9 @@ const CustomRouter = props => {
             />
           );
         }) : ''}
-        <Route exact strict path="/logout" render={(routeProps) => <Logout {...routeProps} />} />
-        <Route exact strict path="/" render={(routeProps) => <Home {...routeProps} />} />
-        <Route exact strict path="/cm" render={(routeProps) => <ContentManagement {...routeProps} />} />
+        <Route exact strict path="/logout" render={(routeProps) => <Logout {...routeProps} {...props} />} />
+        <Route exact strict path="/" render={(routeProps) => <Home {...routeProps} />} {...props} />
+        <Route exact strict path="/cm" render={(routeProps) => <ContentManagement {...routeProps} {...props} />} />
         <Route component={PageNotFound} />
       </Switch>
     </div>

@@ -5,7 +5,7 @@ const loginData = () => {
 };
 
 const isLoggedIn = () => {
-  return loginData().hasUserLoggedIn;
+  return loginData().hasUserLoggedIn ? loginData().hasUserLoggedIn : false;
 };
 
 const performLoginAction = props => {
@@ -28,10 +28,12 @@ const performLoginAction = props => {
   return localLoginData.hasUserLoggedIn;
 };
 
-const performLogoutAction = () => {
+const performLogoutAction = (props) => {
+  const { checkPageUpdate = () => { } } = props
   const localLoginData = loginData();
   localLoginData.hasUserLoggedIn = false;
   sessionStorage.setItem("loginData", JSON.stringify(localLoginData));
+  checkPageUpdate("logout")
 };
 
 const simulateAccountCreation = props => {

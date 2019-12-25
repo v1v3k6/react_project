@@ -15,7 +15,7 @@ class Home extends React.Component {
           return (
             <Link
               to={`/foodlist/${data.id}`}
-              className="card mt-1 ml-1 card-dark rounded card-parent"
+              className="card mt-1 ml-1 card-dark rounded card-parent d-flex justify-content-center flex-wrap"
               key={index}
             >
               <CreateCard

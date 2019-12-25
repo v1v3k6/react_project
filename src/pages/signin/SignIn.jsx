@@ -21,6 +21,13 @@ class Signin extends React.Component {
       this.dataSet[data.name] = data.value;
     });
   }
+  submitFormData = (values) => {
+    const { checkPageUpdate } = this.props
+    const loginStatus = performLoginAction(values);
+    if (!loginStatus) alert("Invalid username or password!");
+    else this.props.history.push('/')
+    checkPageUpdate("loggedin")
+  }
   renderFormComponents = localProps => {
     const { errors, touched, handleChange } = localProps;
     return (
@@ -42,9 +49,7 @@ class Signin extends React.Component {
       <Formik
         initialValues={{ ...this.dataSet }}
         onSubmit={values => {
-          const loginStatus = performLoginAction(values);
-          if (!loginStatus) alert("Invalid username or password!");
-          else this.props.history.push('/')
+          this.submitFormData(values)
         }}
         validationSchema={SignInSchemaGenerator}
         className="d-flex justify-content-center text-white w-100 mx-auto"

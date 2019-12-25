@@ -1,3 +1,3 @@
-import AddToCart from "./AddToCart.jsx";
-export default AddToCart;
-export { AddToCart };
+import { addToCart, removeFromCart } from "./AddToCart.jsx";
+export default addToCart;
+export { addToCart, removeFromCart };

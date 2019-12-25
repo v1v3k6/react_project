@@ -1,24 +1,19 @@
-
-.card-parent{
-    width: 24.66%;
+.card-parent {
+  width: 24.66%;
 }
 
-.card-parent:hover{
-    cursor: pointer;
-}
-
-.custom-carousal-image-height{
-    height: 25rem;
+.card-parent:hover {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1560px) {
-    .card-parent{
-        width: 24%;
-    }
+  .card-parent {
+    width: 24%;
   }
+}
 
-  @media only screen and (max-width: 1080px) {
-    .card-parent{
-        width: 49%;
-    }
+@media only screen and (max-width: 1080px) {
+  .card-parent {
+    width: 49%;
   }
+}

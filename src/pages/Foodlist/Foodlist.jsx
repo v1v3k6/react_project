@@ -9,12 +9,12 @@ class Foodlist extends React.Component {
         super(props)
     }
     getHotelData = () => {
-        if (isNaN(this.props.match.params.id))
+        if (isNaN(this.props.match.params.id) || !this.props.match.params.id)
             return <PageNotFound />
         const id = parseInt(this.props.match.params.id) - 1
-        const {updateCartValue} = this.props
+        const { updateCartValue, cartValue } = this.props
         return (
-            <div key={id} className="d-flex justify-content-start flex-wrap w-100">
+            <div key={id} className="d-flex justify-content-start flex-wrap w-75">
                 {dataObject.hotels[id].dishes.map((data, index) => {
                     return (
                         <div
@@ -33,7 +33,8 @@ class Foodlist extends React.Component {
                                     description: data.description,
                                     updateCartValue: updateCartValue,
                                     isFood: true,
-                                    hotelName: dataObject.hotels[id].name
+                                    hotelName: dataObject.hotels[id].name,
+                                    cartValue: cartValue
                                 }}
                             />
                         </div>
