@@ -34,7 +34,7 @@ class ContentManagement extends React.Component {
   updateCartValue(itemData, value) {
     const { name, hotelName, price } = itemData
 
-    if (!this.cartValue.hotel.name[hotelName] || this.cartValue.hotel.name === "")
+    if (!this.cartValue.hotel.name || this.cartValue.hotel.name === "")
       this.cartValue.hotel.name = hotelName
 
     if (this.cartValue.hotel.name === hotelName) {
@@ -43,9 +43,6 @@ class ContentManagement extends React.Component {
       else
         this.cartValue.hotel.items = addToCart({ name, price }, this.cartValue.hotel)
     }
-
-    // console.log(id)
-    // console.log(this.cartValue)
   }
   render() {
     return (
