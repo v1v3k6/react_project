@@ -32,17 +32,18 @@ class ContentManagement extends React.Component {
     this.hasPageUpdated = hasPageUpdated;
   }
   updateCartValue(itemData, value) {
-    const { name, hotelName, price } = itemData
+    const { name, hotelName, price, image } = itemData
 
     if (!this.cartValue.hotel.name || this.cartValue.hotel.name === "")
       this.cartValue.hotel.name = hotelName
 
     if (this.cartValue.hotel.name === hotelName) {
       if (value == -1)
-        this.cartValue.hotel.items = removeFromCart({ name, price }, this.cartValue.hotel)
+        this.cartValue.hotel.items = removeFromCart({ name, image, price }, this.cartValue.hotel)
       else
-        this.cartValue.hotel.items = addToCart({ name, price }, this.cartValue.hotel)
+        this.cartValue.hotel.items = addToCart({ name, image, price }, this.cartValue.hotel)
     }
+    console.log("cartData: ", JSON.parse(JSON.stringify(this.cartValue)))
   }
   render() {
     return (
